@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, train_test_split
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Flatten, BatchNormalization
@@ -19,9 +19,7 @@ def load_data(val_size=5000):
     x_tr = train.iloc[:,1:]
     y_t = test["label"]
     x_t = test.iloc[:,1:]
-    i = np.random.randint(y_tr.shape[0]+1, size=val_size)
-    y_v = y_tr.take(i) 
-    x_v = x_tr.take(i)
+    x_tr, x_v, y_tr, y_v = train_test_split(x_tr, y_tr, test_size=val_size)
     return(x_tr,x_v,x_t,y_tr,y_v,y_t)
 
 def create_model_3(	filters1=32,

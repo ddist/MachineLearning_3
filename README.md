@@ -6,7 +6,7 @@
 - SVM
 - Kernel PCA
 
-### Bike sharing demanda prediction
+### Bike sharing demand prediction
 - Regression Trees
 - SVM
 - Feature Extraction
